@@ -1,0 +1,23 @@
+$primary_bg_color: #fff;
+$secondary_bg_color: #fff;
+$box_colors: #e5ce87;
+$shadow: hsla(176,19%,13%,0.35);
+
+
+body {
+	background-color: $primary_bg_color;
+	background-image: url(/images/backgrounds/indigo.png);
+}
+
+.wrapper {
+	background-color: $secondary_bg_color;
+	background-image: url(/images/backgrounds/parchment1.jpg);
+	height: 100%;
+	overflow: auto;
+
+}
+
+.panel {
+	background-image: url(/images/backgrounds/light_parchment1.jpg);
+
+}
