@@ -121,6 +121,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
+		'Msurguy\Honeypot\HoneypotServiceProvider',
+		'Laracasts\Utilities\UtilitiesServiceProvider',
 
 	),
 
@@ -136,6 +139,7 @@ return array(
 	*/
 
 	'manifest' => storage_path().'/meta',
+	
 
 	/*
 	|--------------------------------------------------------------------------
