@@ -5,18 +5,21 @@
 @stop
 
 @section('content')
-
-	<h1>Log in</h1>
-	
-	{{ Form::open(array('url' => '/login')) }}
+		<h6 class="subheader">What do you mean you're not a member? <a href='/signup'>Sign up</a> and see all the great things we have to offer!</h6>
+		{{ Form::open(array('url' => '/login')) }}
 				
-		Email<br>
-		{{ Form::text('email') }}<br><br>
+		<div class='form-group'>
+			{{ Form::label('email', 'Email') }} 
+			{{ Form::email('email') }}
+		</div>
+
+		<div class='form-group'>
+			{{ Form::label('password', 'Password') }} 
+			{{ Form::password('password') }}
+		</div>
 	
-		Password:<br>
-		{{ Form::password('password') }}<br><br>
-		
-		{{ Form::submit('Submit') }}
+
+		{{ Form::submit('log me in already!', array('class' => 'small radius button')) }}
 	
 	{{ Form::close() }}
 	

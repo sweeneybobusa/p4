@@ -2,22 +2,20 @@
 
 
 @section('title')
-	Edit song
+	Update song {{$song->song_title}}
 @stop
-
-
-
+@section('breadcrumbs')&nbsp;|&nbsp;Update @stop
 @section('content')
 
-	{{ Form::model($song, ['method' => 'post', 'action' => ['songController@postEdit', $song->id]]) }}
+	{{ Form::model($song, ['method' => 'post', 'action' => ['SongController@postEdit', $song->id]]) }}
 	
-		<h2>Update: {{ $song->name }}</h2>
+		<h3>Update: {{ $song->song_title }}</h3>
 	
 		<div class='form-group'>
 			{{ Form::label('song_title', 'Song Title') }} 
 			{{ Form::text('song_title') }}
 		</div>
-
+		
 		<div class='form-group'>
 			{{ Form::label('artist_id', 'Artist') }}
 			{{ Form::select('artist_id', $artists, $song->artist_id); }}
@@ -26,6 +24,11 @@
 		<div class='form-group'>
 			{{ Form::label('year', 'Year song was published (YYYY)') }} 
 			{{ Form::text('year') }}
+		</div>
+
+		<div class='form-group'>
+			{{ Form::label('album', 'Album') }} 
+			{{ Form::text('album') }}
 		</div>
 
 		<div class='form-group'>
@@ -43,7 +46,7 @@
 			{{ Form::text('video_url') }}
 		</div>
 		
-		{{ Form::submit('Save') }}
+		{{ Form::submit('Now, this is what I&rsquo;m talkin&rsquo; about', array('class' => 'small radius button')) }}
 	
 	{{ Form::close() }}
 

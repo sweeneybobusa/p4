@@ -1,17 +1,15 @@
 @extends('_master')
 
 @section('title')
-	Search (with Ajax!)
+	Dance glossary Search
 @stop
 
 
 @section('content')
 
-	<h1>Search (with Ajax!)</h1>
-
 	<label for='query'>Search:</label>
-	<input type='text' id='query' name='query' value='novel'>
-	<button id='search-html'>Search and get HTML back</button><br><br>
+	<input type='text' id='query' name='query'>
+	<button id='search' class='small radius button'>Go on and figure out that there word.</button><br><br>
 	<div id='results'></div>
 
 @stop

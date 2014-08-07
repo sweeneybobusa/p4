@@ -2,28 +2,17 @@
 
 
 @section('title')
-	View Tag
+	About: {{ $tag->name }}
 @stop
 
 
 @section('content')
+<a href='/tag/create' class='radius label'>Add a new tag</a>
 
-	<h2>Tag: {{ $tag->name }}</h2>
-	
-	<div>
-	Created: {{ $tag->created_at }}
-	</div>
-
-	<div>
-	Last Updated: {{ $tag->updated_at }}
-	</div>
-	
-	{{---- Edit ----}}
-	<a href='/tag/{{ $tag->id }}/edit'>Edit</a>
-		
-	{{---- Delete -----}}
-	{{ Form::open(['method' => 'DELETE', 'action' => ['TagController@destroy', $tag->id]]) }}
-		<a href='javascript:void(0)' onClick='parentNode.submit();return false;'>Delete</a>
-	{{ Form::close() }}
+<p><strong>{{ $tag->name }}</strong> was created on {{ $tag->created_at }} and last updated on {{ $tag->updated_at }}.
+{{ Form::open(['method' => 'DELETE', 'action' => ['TagController@destroy', $tag->id]]) }}
+<a href='/tag/{{ $tag->id }}/edit' class="radius label">Edit</a>
+<a href='javascript:void(0)' onClick='parentNode.submit();return false;' class="radius label">Delete</a>{{ Form::close() }}
+</p>
 	
 @stop

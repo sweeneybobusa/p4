@@ -1,19 +1,16 @@
 <section>
-	<img class='cover' src='{{ $book['cover'] }}'>
 	
-	<h2>{{ $book['title'] }}</h2>
+	<h3>{{ $song['song_title'] }}</h3>
 	
-	<p>			
-	{{ $book['author']->name }} {{ $book['published'] }}
-	</p>
+	<p>{{ $song['bpm'] }} <abbr title="Beats per minute">bpm</abbr>	{{ $song['artist']->name }} {{ $song['year'] }} {{  $song['album'] }}</p>
 
 	<p>
-		@foreach($book['tags'] as $tag) 
+		@foreach($song['tags'] as $tag) 
 			{{ $tag->name }}
 		@endforeach
 	</p>
 	
-	<a href='{{ $book['cover'] }}'>Purchase this book...</a>
-	<br>
-	<a href='/book/edit/{{ $book->id }}'>Edit</a>
+	<p><a href='{{ $song['music_link'] }}'>Purchase this song...</a><br>
+	   <a href='{{ $song['video_url'] }}'>Music video...</a><br>
+	   <a href='/song/edit/{{ $song->id }}'>Edit</a></p>
 </section>

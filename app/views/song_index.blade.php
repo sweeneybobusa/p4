@@ -2,21 +2,14 @@
 
 
 @section('title')
-	All your Songs
+	The songs
 @stop
+
 
 @section('content')
 
-	<h2>songs</h2>
-
 	<div>
-		View as:
-		<a href='/song/?format=json' target='_blank'>JSON</a> | 
-		<a href='/song/?format=pdf' target='_blank'>PDF</a>
-	</div>
-	
-	<div>
-		<a href='/song/create'>+ Add a song</a>
+		<a href='/song/create' class="radius label">Add a song</a>
 	</div>
 
 
@@ -32,25 +25,13 @@
 	@foreach($songs as $song_title => $song)
 		
 		<section>
-			<img class='cover' src='{{ $song['cover'] }}'>
-			
-			<h2>{{ $song['song_title'] }}</h2>
-			
-			<p>			
-			{{ $song['artist']->artist_name }} {{ $song['year'] }}
-			</p>
-
-			<p>
-				@foreach($song['tags'] as $tag) 
-					{{ $tag->dance_tag }}
-				@endforeach
-			</p>
-			
-			<a href='{{ $song['music_link'] }}'>Purchase this song...</a><br>
-			
-			<a href='{{ $song['video_url'] }}'>Music video...</a><br>
-			
-			<a href='/song/edit/{{ $song->id }}'>Edit</a>
+			<h3>{{ $song['song_title'] }}</h3>
+			<p>By {{ $song['artist']->artist_name }} from <em>{{ $song['album'] }}</em> ({{ $song['year'] }}) and is {{ $song['bpm'] }} <abbr title="Beats per minute">bpm</abbr>. </p>
+			@foreach($song['tags'] as $tag)
+				<a href="/tag/{{ $tag->id }}" class="radius label">{{ $tag->name }}</a>
+			@endforeach
+			<a href='{{ $song['music_link'] }}' class="radius label">Buy {{ $song['song_title'] }}</a> <a href='{{ $song['video_url'] }}' class="radius label">Music Video</a> 
+				<a href='/song/edit/{{ $song->id }}' class="radius label">Edit</a></p>
 		</section>
 	
 	@endforeach

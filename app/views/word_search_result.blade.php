@@ -1,8 +1,5 @@
-<section>
-
-	<h2>{{ $word['dance_term'] }}</h2>
-	
-	<p>{{ $word['abbreviation'] }}<br>
-	{{ $word['definition'] }}</p>
-
-</section>
+<li>
+			<h5>{{ $word['dance_term'] }}</h5>
+			<h6>{{ $word['abbreviation'] }}</h6>
+			<p>{{ $word['definition'] }}</p>
+</li>

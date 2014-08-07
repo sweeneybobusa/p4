@@ -6,9 +6,6 @@
 
 @section('content')
 
-	<h1>Add a new song</h1>
-
-
 	{{ Form::open(array('url' => '/song/create', 'method' => 'POST')) }}
 
 		<div class='form-group'>
@@ -27,6 +24,11 @@
 		</div>
 
 		<div class='form-group'>
+			{{ Form::label('album','Album') }} 
+			{{ Form::text('album') }}
+		</div>
+
+		<div class='form-group'>
 			{{ Form::label('bpm','Beats per minute (bpm)') }} 
 			{{ Form::text('bpm') }}
 		</div>
@@ -41,7 +43,7 @@
 			{{ Form::text('video_url') }}
 		</div>
 		
-		{{ Form::submit('Add') }}
+		{{ Form::submit('This is the best song, evah!', array('class' => 'small radius button')) }}
 
 	{{ Form::close() }}
 

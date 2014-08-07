@@ -2,23 +2,25 @@
 
 
 @section('title')
-	All the tags
+	Song tags
 @stop
+
 
 
 @section('content')
 
-	<h2>Tags</h2>
+	<a href='/tag/create' class='radius label'>Add a new tag</a>
 	
-	
-	<a href='/tag/create'>+ Add a new tag</a>
-	
-	<br><br>
 	
 	@foreach($tags as $tag)
 	
 		<div>
-			<a href='/tag/{{ $tag->id }}'>{{ $tag->name }}</a>
+		<h5>{{ $tag->name }} </h5>
+			{{ Form::open(['method' => 'DELETE', 'action' => ['TagController@destroy', $tag->id]]) }}
+			<a href='/tag/{{ $tag->id }}' class="radius label">About</a>
+			<a href='/tag/{{ $tag->id }}/edit' class="radius label">Edit</a>
+			<a href='javascript:void(0)' onClick='parentNode.submit();return false;' class="radius label">Delete</a>{{ Form::close() }}
+		<br>
 		</div>
 	
 	@endforeach

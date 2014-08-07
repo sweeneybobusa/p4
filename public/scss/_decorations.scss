@@ -1,12 +1,14 @@
 $primary_bg_color: #fff;
 $secondary_bg_color: #fff;
+$flash_bg_color: #A80000;
+$flash_text_color: #FFF3D0;
 $box_colors: #e5ce87;
 $shadow: hsla(176,19%,13%,0.35);
 
 
 body {
 	background-color: $primary_bg_color;
-	background-image: url(/images/backgrounds/indigo.png);
+	background-image: url(/images/backgrounds/bgtile-indigo.png);
 }
 
 .wrapper {
@@ -20,4 +22,20 @@ body {
 .panel {
 	background-image: url(/images/backgrounds/light_parchment1.jpg);
 
+}
+
+.flash-message {
+	width:		100%;
+	position:	absolute;
+	top:0; left:0;
+	background-color:	$flash_bg_color;
+	background-image: 	url(/images/backgrounds/bgtile-red.png);
+	text-align:	center;
+	color:	$flash_text_color;
+    font-weight:	bold;
+	padding:	10px; 
+}
+
+.button {
+		background-image: 	url(/images/backgrounds/bgtile-green.png);
 }

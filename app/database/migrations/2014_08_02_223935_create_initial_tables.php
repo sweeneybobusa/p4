@@ -12,7 +12,7 @@ class CreateInitialTables extends Migration {
 	 */
 	public function up() {
 	
-		# create users table (based on foobooks example and trying honeypot authentication
+		# create users table (based on foobooks example)
 		Schema::create('users', function($table) {
 			# AI, PK
 			$table->increments('id');
@@ -21,19 +21,12 @@ class CreateInitialTables extends Migration {
 			$table->timestamps();
 
 			# General data
-			$table->string('username')->unique();
-			$table->string('name');
 			$table->string('nickname');
 			$table->string('email')->unique();
 			$table->string('password');
-			$table->date('birth_date');
 			$table->boolean('remember_token');
 			$table->text('about_me');
-			
-			# for use with honeypot's user authentication -- not sure if I need to but I'll put it in
-			$table->string('my_name'); 
-			$table->string('my_time');
-			
+						
 			# eventually putting favorites foreign keys for songs and line dances here
 
 		});

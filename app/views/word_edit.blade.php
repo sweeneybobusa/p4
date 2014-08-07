@@ -27,7 +27,7 @@
 			{{ Form::text('definition') }}
 		</div>
 		
-		{{ Form::submit('Save') }}
+		{{ Form::submit('Now this is what I mean!', array('class' => 'small radius button')) }}
 	
 	{{ Form::close() }}
 

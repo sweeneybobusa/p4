@@ -27,16 +27,42 @@ Route::post('/signup', ['before' => 'csrf', 'uses' => 'UserController@postSignup
 Route::post('/login', ['before' => 'csrf', 'uses' => 'UserController@postLogin'] );
 Route::get('/logout', ['before' => 'auth', 'uses' => 'UserController@getLogout'] );
 
+/*-------------------------------------------------------------------------------------------------
+# ! Song
+Explicit Routing
+-------------------------------------------------------------------------------------------------*/
+Route::get('/song', 'SongController@getIndex');
+Route::get('/song/edit/{id}', 'SongController@getEdit');
+Route::post('/song/edit/{id}', 'SongController@postEdit');
+Route::get('/song/create', 'SongController@getCreate');
+Route::post('/song/create', 'SongController@postCreate');
+Route::get('/song/search', 'SongController@getSearch');
+Route::post('/song/search', 'SongController@postSearch');
 
 /*-------------------------------------------------------------------------------------------------
-// ! glossary lookup
+// ! tag lookup
 -------------------------------------------------------------------------------------------------*/
-Route::get('/glossary/{term_url?}', function($term_url = null) {
-		return View::make('test');
-	});
+Route::resource('tag', 'TagController');
 
-Route::put('/test', function() {
-		return View::make('test');
+
+/*-------------------------------------------------------------------------------------------------
+// ! Word lookup
+-------------------------------------------------------------------------------------------------*/
+Route::resource('word', 'WordController');
+
+
+/*-------------------------------------------------------------------------------------------------
+// ! testpage
+-------------------------------------------------------------------------------------------------*/
+Route::get('/test', function() {
+			
+			$query = "";
+			$words = Word::get();
+		
+		return View::make('word_index')
+				->with('words', $words)
+				->with('query', $query);
+		
 	});
 
 Route::get('mysql-test', function() {

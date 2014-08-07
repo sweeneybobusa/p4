@@ -17,7 +17,7 @@ class CreateDanceTables extends Migration {
 
 			# AI, PK
 			$table->increments('id');
-			
+
 			# adding Create_on and updated_at columns
 			$table->timestamps();
 			
@@ -41,8 +41,8 @@ class CreateDanceTables extends Migration {
 			$table->string('song_title');
 			$table->integer('artist_id')->unsigned();
         	$table->string('album');
-        	$table->date('year');
-        	$table->string('bpm');
+        	$table->integer('year');
+        	$table->integer('bpm');
         	$table->string('music_link');
         	$table->string('video_url');
         				
@@ -61,7 +61,7 @@ class CreateDanceTables extends Migration {
 			$table->timestamps();
 
 			# General data
-			$table->string('dance_tag');
+			$table->string('name', 64);
 			
 			# setting foreign keys
 			
@@ -90,17 +90,18 @@ class CreateDanceTables extends Migration {
 	public function down()
 	{
 		Schema::table('song_tag', function($table){
-			$table->dropifexistsForeign('song_tag_song_id_foreign');
-			$table->dropifexistsForeign('song_tag_tag_id_foreign');
+			$table->dropForeign('song_tag_song_id_foreign');
+			$table->dropForeign('song_tag_tag_id_foreign');
 		});
 
 		Schema::table('songs', function($table){
-			$table->dropifexistsForeign('songs_artist_id_foreign');
+			$table->dropForeign('songs_artist_id_foreign');
 		});
 		
 		Schema::dropifexists('artists');
 		Schema::dropifexists('dances');
 		Schema::dropifexists('songs');
+		Schema::dropifexists('tags');
 		Schema::dropifexists('song_tag');
 	
 	}

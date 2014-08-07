@@ -27,7 +27,7 @@
 			{{ Form::text('definition') }}
 		</div>
 		
-		{{ Form::submit('Add') }}
+		{{ Form::submit('OMG, this is the best word evah!', array('class' => 'small radius button')) }}
 
 	{{ Form::close() }}
 

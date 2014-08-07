@@ -8055,13 +8055,13 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
-/* line 7, ../scss/_decorations.scss */
+/* line 9, ../scss/_decorations.scss */
 body {
   background-color: white;
-  background-image: url(/images/backgrounds/indigo.png);
+  background-image: url(/images/backgrounds/bgtile-indigo.png);
 }
 
-/* line 12, ../scss/_decorations.scss */
+/* line 14, ../scss/_decorations.scss */
 .wrapper {
   background-color: white;
   background-image: url(/images/backgrounds/parchment1.jpg);
@@ -8069,7 +8069,26 @@ body {
   overflow: auto;
 }
 
-/* line 20, ../scss/_decorations.scss */
+/* line 22, ../scss/_decorations.scss */
 .panel {
   background-image: url(/images/backgrounds/light_parchment1.jpg);
+}
+
+/* line 27, ../scss/_decorations.scss */
+.flash-message {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #a80000;
+  background-image: url(/images/backgrounds/bgtile-red.png);
+  text-align: center;
+  color: #fff3d0;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* line 39, ../scss/_decorations.scss */
+.button {
+  background-image: url(/images/backgrounds/bgtile-green.png);
 }

@@ -1,20 +1,14 @@
 @extends('_master')
 
-@section('title')
-	Search (with Ajax!)
+@section('title') 
+Searching the Songs
 @stop
-
 
 @section('content')
 
-	<h1>Search (with Ajax!)</h1>
-
 	<label for='query'>Search:</label>
-	<input type='text' id='query' name='query' value='novel'><br><br>
-	
-	<button id='search-json'>Search and get JSON back</button><br><br>
-	<button id='search-html'>Search and get HTML back</button><br><br>
-
+	<input type='text' id='query' name='query' >
+	<button id='search-html' class="radius">Search</button><br><br>
 	<div id='results'></div>
 
 @stop
