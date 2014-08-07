@@ -21,7 +21,6 @@ web1:
 
   before_deploy: 
     - "php artisan migrate"
-    - "php artisan db:seed --class=SongSeeder"
 
   after_deploy:
     - "rm -f app/storage/cache/*"
