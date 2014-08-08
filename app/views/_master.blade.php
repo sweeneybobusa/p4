@@ -25,7 +25,7 @@
       		@if(Auth::check())
 				<?php $auth_message="&nbsp;|&nbsp;<a href='/song'>Song</a>&nbsp;|&nbsp;<a href='/tag'>Tag</a>&nbsp;&nbsp;&nbsp;&nbsp;(Hey, " . Auth::user()->nickname . ", don't ferget ta <a href='/logout'>log out</a> when yer thru!) "; ?>
 			@else
-				<?php $auth_message="&nbsp;|&nbsp;(Already a member? <a href='/login'>Login</a> | No? <a href='/signup'>Sign up</a> to see more stuff.</em>"; ?>		
+				<?php $auth_message="&nbsp;|&nbsp;(Already a member? <a href='/login'>Login</a> | No? <a href='/signup'>Sign up</a> to see more stuff."; ?>		
 			@endif
 
       			<p><a href="/">Home</a>&nbsp;|&nbsp;<a href="/word">Word</a>@yield('breadcrumbs'){{ $auth_message }}<br>
