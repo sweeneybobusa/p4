@@ -8,9 +8,6 @@
 @section('content')
 
 	{{ Form::model($song, ['method' => 'post', 'action' => ['SongController@postEdit', $song->id]]) }}
-	
-		<h3>Update: {{ $song->song_title }}</h3>
-	
 		<div class='form-group'>
 			{{ Form::label('song_title', 'Song Title') }} 
 			{{ Form::text('song_title') }}

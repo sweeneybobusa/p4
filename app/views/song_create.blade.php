@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-	Add a new song
+	Add a song
 @stop
 
 @section('content')

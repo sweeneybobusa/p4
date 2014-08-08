@@ -73,7 +73,7 @@ class UserController extends BaseController {
 			return Redirect::intended('/')->with('flash_message', 'Welcome Back!');
 			}
 		else {	return Redirect::to('/login')
-				->with('flash_message', 'Log in failed; (post login) please try again.')
+				->with('flash_message', 'Log in failed, please try again.')
 				->withInput();
 			}
 		

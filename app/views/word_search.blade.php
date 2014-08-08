@@ -6,15 +6,9 @@
 
 
 @section('content')
-
-	<label for='query'>Search:</label>
-	<input type='text' id='query' name='query'>
-	<button id='search' class='small radius button'>Go on and figure out that there word.</button><br><br>
-	<div id='results'></div>
-
-@stop
-
-@section('footer')
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="/js/search.js"></script>
+		{{ Form::open(array('action' => 'WordController@index', 'method' => 'GET')) }}
+			{{ Form::label('query','Search for a word:') }}
+			{{ Form::text('query') }}
+			{{ Form::submit('What the heck is this word?', array('class' => 'small radius button')) }}
+		{{ Form::close() }}
 @stop

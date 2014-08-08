@@ -6,10 +6,7 @@
 
 @section('content')
 
-	<h1>Add a new word</h1>
-
-
-	{{ Form::open(array('url' => '/word/create', 'method' => 'POST')) }}
+	{{ Form::open(array('action' => 'WordController@store')) }}
 
 
 		<div class='form-group'>

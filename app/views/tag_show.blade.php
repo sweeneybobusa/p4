@@ -7,7 +7,7 @@
 
 
 @section('content')
-<a href='/tag/create' class='radius label'>Add a new tag</a>
+<a href='/tag/create' class='radius label'>Add a tag</a>
 
 <p><strong>{{ $tag->name }}</strong> was created on {{ $tag->created_at }} and last updated on {{ $tag->updated_at }}.
 {{ Form::open(['method' => 'DELETE', 'action' => ['TagController@destroy', $tag->id]]) }}

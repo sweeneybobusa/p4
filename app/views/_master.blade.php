@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta charset="utf-8" />
-	<title>@yield('title','Dancing Fool')</title>
+	<title>Dancing Fool - @yield('title','whoops-no title')</title>
 	<link rel="stylesheet" href="{{ URL::asset('/stylesheets/app.css') }}" />
 	<link href='http://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
 	@yield('head')
@@ -23,7 +23,7 @@
       	<!--content-->
       	<section class="content large-10 large-centered columns">
       		@if(Auth::check())
-				<?php $auth_message="&nbsp;|&nbsp;<a href='/song'>Song</a>&nbsp;|&nbsp;<a href='/tag'>Tag</a>&nbsp;&nbsp;&nbsp;&nbsp;(Hey, " . Auth::user()->nickname . ", don't ferget ta <a href='/logout'>log out</a> when yer thru!.)</em>"; ?>
+				<?php $auth_message="&nbsp;|&nbsp;<a href='/song'>Song</a>&nbsp;|&nbsp;<a href='/tag'>Tag</a>&nbsp;&nbsp;&nbsp;&nbsp;(Hey, " . Auth::user()->nickname . ", don't ferget ta <a href='/logout'>log out</a> when yer thru!) "; ?>
 			@else
 				<?php $auth_message="&nbsp;|&nbsp;(Already a member? <a href='/login'>Login</a> | No? <a href='/signup'>Sign up</a> to see more stuff.</em>"; ?>		
 			@endif
@@ -44,9 +44,9 @@
  	</div>
  	
     <script src="{{ URL::asset('/bower_components/modernizr/modernizr.js') }}"  type='text/javascript'></script>
-	<script src="{{ URL::asset('/bower_components/jquery/dist/jquery.min.js') }}"  type='text/javascript' ></script>
+	<script src="{{ URL::asset('/bower_components/jquery/dist/jquery.min.js') }}"  type='text/javascript'></script>
     <script src="{{ URL::asset('/bower_components/foundation/js/foundation.min.js') }}"  type='text/javascript'></script>
-    <script src="{{ URL::asset('js/app.js') }}" type='text/javascript' ></script>
+    <script src="{{ URL::asset('/js/app.js') }}" type='text/javascript' ></script>
 
     </body>
 </html>

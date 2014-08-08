@@ -15,8 +15,7 @@ class SongController extends BaseController {
 		$this->beforeFilter('auth');
 		
 	}
-	
-	
+		
 	/*-------------------------------------------------------------------------------------------------
 	Search for songs
 	-------------------------------------------------------------------------------------------------*/
@@ -26,65 +25,39 @@ class SongController extends BaseController {
 		
 	}
 	
-	
 	/*-------------------------------------------------------------------------------------------------
-	http://localhost/song/search
-	-------------------------------------------------------------------------------------------------*/
-	public function postSearch() {
-		
-		if(Request::ajax()) {
-		
-			$query  = Input::get('query');
-			
-			# Do the actual query
-	        $songs  = Song::search($query)
-	        	->orderBy('song_title')
-	        ;
-	        
-	        # loop through the results building the HTML View we'll return
-		 	$results = '';	        
-			foreach($songs as $song) {
-				
-				# Created a "stub" of a view called song_search_result.php; all it is is a stub of code to display a song
-				# For each song, we'll add a new stub to the results
-				$results .= View::make('song_search_result')->with('song', $song)->render();   
-				
-				return $results;
-
-		}
-		}
-	}
-
-
-	/*-------------------------------------------------------------------------------------------------
-	
+		Index page
 	-------------------------------------------------------------------------------------------------*/
 	public function getIndex() {
 			
 		$query  = Input::get('query');
-		
+		$message = "";
 		# If there is a query, search the library with that query
 		if($query) {
 		
+			$message = " was successfull!";
 			# Eager load tags and artist
-	 		$songs = Song::search($query);
-		
-			$songs = Song::with('tags','artist')
-	 		->whereHas('artist', function($q) use($query) {
-			    $q->where('artist_name', 'LIKE', "%$query%");
-			})
-			->orWhereHas('tags', function($q) use($query) {
-			    $q->where('name', 'LIKE', "%$query%");
-			})
-			->orWhere('song_title', 'LIKE', "%$query%")
-			->orWhere('year', 'LIKE', "%$query%")
-			->get();
-					 		   	 		   		
+	 		$songs = Song::with('tags','artist')
+	 			->whereHas('artist', function($q) use($query) {
+			    	$q->where('artist_name', 'LIKE', "%$query%");
+					}
+				)
+				->orWhereHas('tags', function($q) use($query) {
+			    	$q->where('name', 'LIKE', "%$query%");
+					}
+				)
+				->orWhere('song_title', 'LIKE', "%$query%")
+				->orWhere('year', 'LIKE', "%$query%")
+				->orderBy('song_title')
+				->get();
+				
 		}
 		# Otherwise, just fetch all songs
 		else {
 			# Eager load tags and artist
-			$songs = Song::with('tags','artist')->get();
+			$songs = Song::with('tags','artist')
+				->orderBy('song_title')
+				->get();
 		}
 		
 		return View::make('song_index')

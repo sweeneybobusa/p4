@@ -18,7 +18,9 @@ class TagController extends \BaseController {
 	public function index()
 	{
 		$tags = Tag::all();
-		return View::make('tag_index')->with('tags',$tags);
+		$tags = $tags->sortBy('name');
+		return View::make('tag_index')
+			->with('tags',$tags);
 	}
 
 
@@ -74,14 +76,10 @@ class TagController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		try {
-			$tag = Tag::findOrFail($id);
-		}
-		catch(Exception $e) {
-			return Redirect::to('/tag')->with('flash_message', 'Tag not found');
-		}
-
-		return View::make('tag_edit')->with('tag', $tag);
+		$tag = Tag::findOrFail($id);
+		
+		return View::make('tag_edit')
+			->with('tag', $tag);
 	}
 
 
@@ -93,14 +91,11 @@ class TagController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		try {
-			$tag = Tag::findOrFail($id);
-		}
-		catch(Exception $e) {
-			return Redirect::to('/tag')->with('flash_message', 'Tag not found');
-		}
-
-		return View::make('tag_edit')->with('tag', $tag);
+		$tag = Tag::findOrFail($id);
+		$tag->fill(Input::all());
+		$tag->save();
+		return Redirect::action('TagController@index')->with('flash_message','The Tag has been saved.'); 
+		
 	}
 
 
@@ -118,11 +113,11 @@ class TagController extends \BaseController {
 		catch(Exception $e) {
 			return Redirect::to('/tag')->with('flash_message', 'Tag not found');
 		}
-			
-		# Note there's a `deleting` Model event which makes sure book_tag entries are also destroyed
+		$tag_deleted = "The tag, " . $tag->name . ", has been deleted.";
+		# Note there's a `deleting` Model event which makes sure song_tag entries are also destroyed
 		Tag::destroy($id);
-		
-		return Redirect::action('TagController@index')->with('flash_message','Your tag has been deleted.');
+				
+		return Redirect::action('TagController@index')->with('flash_message', $tag_deleted);
 	}
 
 
